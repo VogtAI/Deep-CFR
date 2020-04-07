@@ -58,7 +58,7 @@ if __name__ == '__main__':
                                             rlbr_bet_set=bet_sets.B_16, 
                                             nn_type="recurrent",
                                             n_iterations=2000,
-                                            device_training="gpu",
+                                            device_training="cuda",
                                          ),
                                          # You can specify one or both modes. Choosing both is useful to compare them.
                                          eval_modes_of_algo=(
