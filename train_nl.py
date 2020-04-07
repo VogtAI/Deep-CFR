@@ -12,7 +12,7 @@ if __name__ == '__main__':
                                          agent_bet_set=bet_sets.B_16,
                                          local_crayon_server_docker_address="46.101.123.20",
 
-                                         DISTRIBUTED=True,
+                                         DISTRIBUTED=False,
                                          CLUSTER=False,
                                          n_learner_actor_workers=2,  # 20 workers
 
