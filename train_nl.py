@@ -7,9 +7,9 @@ from DeepCFR.TrainingProfile import TrainingProfile
 from DeepCFR.workers.driver.Driver import Driver
 
 if __name__ == '__main__':
-    ctrl = Driver(t_prof=TrainingProfile(name="NL1",
+    ctrl = Driver(t_prof=TrainingProfile(name="NL2",
                                          nn_type="recurrent",  # We also support RNNs, but the paper uses FF
-                                         agent_bet_set=bet_sets.B_16,
+                                         agent_bet_set=bet_sets.POT_ONLY,
                                          local_crayon_server_docker_address="46.101.123.20",
 
                                          DISTRIBUTED=False,
@@ -55,7 +55,7 @@ if __name__ == '__main__':
                                          game_cls=DiscretizedNLHoldem,
 
                                          rl_br_args=RLBRArgs(
-                                            rlbr_bet_set=bet_sets.B_16, 
+                                            rlbr_bet_set=bet_sets.POT_ONLY, 
                                             nn_type="recurrent",
                                             n_iterations=2000,
                                             device_training="cpu",
