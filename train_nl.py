@@ -1,5 +1,7 @@
 from PokerRL.game.games import DiscretizedNLHoldem  # or any other game
 from PokerRL.eval.rl_br.RLBRArgs import RLBRArgs
+from PokerRL.eval.lbr.LBRArgs import LBRArgs
+
 from PokerRL.game import bet_sets
 
 from DeepCFR.EvalAgentDeepCFR import EvalAgentDeepCFR
@@ -14,11 +16,11 @@ if __name__ == '__main__':
 
                                          DISTRIBUTED=False,
                                          CLUSTER=False,
-                                         n_learner_actor_workers=2,  # 20 workers
+                                         n_learner_actor_workers=1,  # 20 workers
 
                                          # regulate exports
                                          export_each_net=False,
-                                         checkpoint_freq=3,
+                                         checkpoint_freq=1,
                                          eval_agent_export_freq=1,  # produces around 15GB over 150 iterations!
 
                                          n_actions_traverser_samples=3,  # = external sampling in FHP
@@ -54,11 +56,10 @@ if __name__ == '__main__':
 
                                          game_cls=DiscretizedNLHoldem,
 
-                                         rl_br_args=RLBRArgs(
-                                            rlbr_bet_set=bet_sets.POT_ONLY, 
-                                            nn_type="recurrent",
-                                            n_iterations=2000,
-                                            device_training="cpu",
+                                         lbr_args=LBRArgs(
+                                            lbr_bet_set=bet_sets.POT_ONLY,
+                                            n_lbr_hands_per_seat=10000, #10x
+                                            lbr_check_to_round=2, #TURN 
                                          ),
                                          # You can specify one or both modes. Choosing both is useful to compare them.
                                          eval_modes_of_algo=(
@@ -68,7 +69,9 @@ if __name__ == '__main__':
 
                                          ),
                   eval_methods={
-                      "rlbr": 3,
+                      "lbr": 4,
                   },
+		iteration_to_import=18,
+		name_to_import="NL2_",
                   n_iterations=9999999)
     ctrl.run()
