@@ -58,7 +58,7 @@ if __name__ == '__main__':
 
                                          lbr_args=LBRArgs(
                                             lbr_bet_set=bet_sets.POT_ONLY,
-                                            n_lbr_hands_per_seat=10000, #10x
+                                            n_lbr_hands_per_seat=5000, #10x *2
                                             lbr_check_to_round=2, #TURN 
                                          ),
                                          # You can specify one or both modes. Choosing both is useful to compare them.
@@ -69,7 +69,7 @@ if __name__ == '__main__':
 
                                          ),
                   eval_methods={
-                      "lbr": 4,
+                      "lbr": 5,
                   },
 		iteration_to_import=18,
 		name_to_import="NL2_",
