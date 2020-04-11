@@ -6,7 +6,7 @@ import copy
 import torch
 from PokerRL.game import bet_sets
 from PokerRL.game.games import DiscretizedNLLeduc
-from PokerRL.game.wrappers import HistoryEnvBuilder, FlatLimitPokerEnvBuilder
+from PokerRL.game.wrappers import HistoryEnvBuilder, FlatLimitPokerEnvBuilder, VanillaEnvBuilder
 from PokerRL.rl.base_cls.TrainingProfileBase import TrainingProfileBase
 from PokerRL.rl.neural.AvrgStrategyNet import AvrgNetArgs
 from PokerRL.rl.neural.DuelingQNet import DuelingQArgs
@@ -142,7 +142,7 @@ class TrainingProfile(TrainingProfileBase):
         elif nn_type == "feedforward":
             from PokerRL.rl.neural.MainPokerModuleFLAT import MPMArgsFLAT
 
-            env_bldr_cls = FlatLimitPokerEnvBuilder
+            env_bldr_cls = VanillaEnvBuilder #FlatLimitPokerEnvBuilder
 
             mpm_args_adv = MPMArgsFLAT(use_pre_layers=use_pre_layers_adv,
                                        card_block_units=n_cards_state_units_adv,
